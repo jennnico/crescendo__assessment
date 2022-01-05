@@ -1,11 +1,12 @@
 //Variables
 
 //window sizes
-@screen-lg: 1319px;
+@screen-lg: 1345px;
 @screen-md: 1080px;
 @screen-sm: 859px;
 @screen-xs: 699px;
 @screen-xxs: 559px;
+@screen-mini: 430px;
 
 //colors:
 @primary: #1550d2;
@@ -28,7 +29,11 @@ body{
     padding: 42px 0;
     width: 1296px;
 
-    @media(max-width: @screen-sm){width: 90%;}
+    @media(max-width: @screen-lg){width: 975px;}
+    @media(max-width: @screen-md){width: 825px;}
+    @media(max-width: @screen-sm){width: 575px;}
+    @media(max-width: @screen-xs){width: 540px;}
+    @media(max-width: @screen-xxs){width: 90%;}
 }
 
 h2.heading{
@@ -65,7 +70,8 @@ h3{
   position: relative;
   z-index: 10;
 
-  @media(max-width: @screen-xxs){display: flex; height: 100vh; justify-content: flex-end; overflow: hidden; padding: 0;}
+  @media(max-width: @screen-sm){background: #eaecee; overflow: hidden;}
+  // @media(max-width: @screen-xxs){display: flex; height: 100vh; justify-content: flex-end; overflow: hidden; padding: 0;}
 
   &:after{
     background: @highlight;
@@ -73,28 +79,41 @@ h3{
     height: 22px;
     position: absolute; bottom: 0; left: 0;
     width: 100%;
+
+    @media(max-width: @screen-sm){display: none;}
   }
 
   &.sticky{
     background: @secondary;
+    border-bottom: solid 5px @highlight;
     height: auto;
     position: fixed;
     left: 0;
     top: 0;
     right: 0;
     width: auto;
+
+    &:after{display: none;}
+
+    .panel__container{padding: 10px 0;}
+
+    .img:not(.img--mobile){display: none;}
+
+    ul{margin-bottom: 0; width: 100%;}
+
+    a{font-size: 16px;}
   }//sticky-nav
 
-  &.sticky--show{height: 100vh;}
-
-  &.sticky + main {
-    padding-top: 102px;
-  }
+  // &.sticky + main {
+  //   padding-top: 102px;
+  // }
 
   .panel__container{
     align-items: flex-end;
     display: flex;
     padding: 0 0 11px;
+
+    @media(max-width: @screen-sm){align-items: center; justify-content: center; min-height: 24px; padding: 10px 0;}
   }
 
   .img{
@@ -112,6 +131,7 @@ h3{
       margin: 22px 0 0px -11px;
       width: 170px;
       z-index: 10;
+      @media(max-width: @screen-sm){display: none;}
   }
 
   .img--title{
@@ -119,6 +139,7 @@ h3{
       padding-right: 53px;
       position: relative;
       width: 217px;
+      @media(max-width: @screen-sm){display: none;}
 
     &:after{
       background: #ccc;
@@ -129,10 +150,32 @@ h3{
     }
   }
 
+  .img--mobile{
+      display: none;
+      max-width: 50%;
+      @media(max-width: @screen-sm){display: block;}
+  }
+
   .navigation__burger{
     cursor: pointer;
     display: none;
-    @media(max-width: @screen-xxs){display: inline; padding: 15px;}
+    padding: 15px;
+    position: absolute; top: 50%; right: 20px;
+    transform: translate(0, -50%);
+
+    @media(max-width: @screen-sm){display: inline;}
+
+    &.close{
+
+        .burger{
+            background: #d81e05;
+
+            &:first-of-type{transform: rotate(45deg) translate(4px, 0px);}
+            &:nth-of-type(2){display: none;}
+            &:nth-of-type(3){transform: rotate(-45deg) translate(5px, -2px);}
+        }
+
+    }
 
     .burger{
       background: @highlight;
@@ -140,6 +183,12 @@ h3{
       height: 3px;
       margin: 0 0 5px;
       width: 25px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+
+      &:last-of-type{margin-bottom: 0;}
     }//burger lines
   }//mobile-menu AKA burger
 
@@ -151,31 +200,49 @@ h3{
       padding: 0;
       width: 59.5%;
 
-    @media(max-width: @screen-xxs){
-      background: @secondary;
+    @media(max-width: @screen-sm){
+      background: #193989;
       min-height: 100vh;
-      position: absolute; top: 46px; right: -100%;
+      position: absolute; top: 0; right: -100%;
       text-align: left;
       width: 100%;
     }
 
-    .nav__decorative{
-      display: none;
-      font-size: 150px;
-      margin: 60px 0;
-      text-align: center;
-
-      @media(max-width: @screen-xxs){display: block;}
-    }
-
   }//nav-items
+
+  .mobile-nav{
+      background: #fff;
+      display: block;
+      padding-top: 20px;
+      text-align: center;
+      top: 100%;
+
+      &:before{
+          color: #193989;
+          content:"Site Links";
+          font-size: 24px;
+      }
+
+      li{
+          background: #ebebeb;
+          padding: 20px;
+          margin: 20px auto 0;
+          width: 90%;
+
+          a{
+              color: #707070;
+              font-size: 24px;
+          }
+      }
+  }
 
   a{
     color: #000;
     font-size: 20px;
     text-decoration: none;
 
-    @media(max-width: @screen-xxs){display: block;}
+    @media(max-width: @screen-md){font-size: 18px;}
+    // @media(max-width: @screen-xxs){display: block;}
 
     &:hover{
       color: @primary;
@@ -185,9 +252,10 @@ h3{
 } //navigation
 
 .panel--heading{
-    background: @primary url('/crescendo__assessment-main/images/background--header.jpg') 50% 50% no-repeat;
+    background: @primary url('/images/background--header.jpg') 70% 50% no-repeat;
     background-size: cover;
-    position: relative;
+
+    @media(max-width: @screen-sm){background: #1a9cf7;}
 
   .panel__container{
       display: flex;
@@ -195,6 +263,9 @@ h3{
       height: 466px;
       justify-content: center;
       padding: 30px 0;
+      position: relative;
+
+      @media(max-width: @screen-sm){height: 809px;}
   }
 
   .heading__content{
@@ -207,6 +278,18 @@ h3{
     font-weight: bold;
     line-height: 1;
     margin: 0 0 18px;
+
+    @media(max-width: @screen-sm){
+        color: #f7f7f7;
+        font-size: 28px;
+        font-weight: 300;
+        margin-bottom: 40px;
+    }
+
+    span{
+        @media(max-width: @screen-sm){font-size: 60px; font-weight: bold;}
+        @media(max-width: @screen-mini){font-size: 46px;}
+    }
   }
 
   h2{
@@ -215,6 +298,25 @@ h3{
     font-weight: 300;
     line-height: 1.2;
     margin: 0;
+
+    @media(max-width: @screen-sm){
+        border-top: dotted 4px fade(#fff, 50%);
+        color: #ebebeb;
+        font-size: 28px;
+        padding: 40px 20px 0 0;
+        width: fit-content;
+    }
+    @media(max-width: @screen-mini){font-size: 23px;}
+  }
+
+  p{
+      color: #ebebeb;
+      display: none;
+      font-size: 28px;
+      position: absolute; top: 0; left: 0;
+
+      @media(max-width: @screen-sm){display: block;}
+      @media(max-width: @screen-mini){font-size: 20px;}
   }
 
   span{display: block;}
@@ -225,9 +327,33 @@ h3{
   @green: #01a59e;
   @babyBlue: #019bf9;
 
-  .insights{
+  @media(max-width: @screen-sm){background: #001a7a;}
+
+  h2.heading{
+      @media(max-width: @screen-sm){
+          color: #fff;
+          font-size: 48px;
+          font-weight: bold;
+      }
+
+      span{
+          @media(max-width: @screen-sm){
+              font-weight: 300;
+          }
+      }
+  }
+
+  h3{
+      @media(max-width: @screen-sm){
+          color: #ccd1e4;
+          font-size: 28px;
+      }
+  }
+
+  .insights__list{
     display: flex;
     justify-content: space-between;
+    transition: all 1s ease-in-out; //carousel
   }
 
   .insight{
@@ -237,6 +363,10 @@ h3{
     flex-direction: column-reverse;
     padding: 34px 22px 17px;
     width: 28.5%;
+  }
+
+  .test{
+      background: pink;
   }
 
   //create mixin if time
@@ -291,10 +421,48 @@ h3{
       width: 100%;
   }
 
+//https://codepen.io/Jake_Woods/pen/vYYoYxo
+//first carousel attempt
+.insights__wrapper{
+    display: flex;
+    grid-gap: 1em;
+    overflow: hidden;
+    width: 55em;
+}
+
+.insights__list{
+    display: flex;
+    grid-gap: 1em;
+    transition: all 1s ease-in-out;
+}
+
+  .buttons__wrapper {
+      text-align: center;
+    margin-top: 1em;
+    width: 100%;
+    & > button {
+      all: unset;
+      background: transparent;
+      border: solid 1px #b7b7b7;
+      border-radius: 50%;
+      cursor: pointer;
+      height: 16px;
+      margin: 0 0.125em;
+      position: relative;
+      user-select: none;
+      width: 16px;
+
+      &.active {
+        background: #b7b7b7;
+      }
+    }
+  }
+  //first carousel attempt
+
 }
 
 .panel--callout{
-    background: @primary url('/crescendo__assessment-main/images/background--callout.jpg') 50% 50% no-repeat;
+    background: @primary url('/images/background--callout.jpg') 50% 50% no-repeat;
     background-size: cover;
     position: relative;
     color: #fff;
@@ -328,6 +496,8 @@ h3{
     display: flex;
     justify-content: space-between;
     margin-top: 57px;
+
+    @media(max-width: @screen-sm){display: block;}
   }
 
   .event{

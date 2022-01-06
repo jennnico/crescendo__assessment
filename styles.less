@@ -31,7 +31,7 @@ body{
 
     @media(max-width: @screen-lg){width: 975px;}
     @media(max-width: @screen-md){width: 825px;}
-    @media(max-width: @screen-sm){width: 575px;}
+    @media(max-width: @screen-sm){width: 630px;}
     @media(max-width: @screen-xs){width: 540px;}
     @media(max-width: @screen-xxs){width: 90%;}
 }
@@ -40,12 +40,25 @@ h2.heading{
   font-size: 34px;
   font-weight: normal;
   margin: 0 0 3px;
+
+  @media(max-width: @screen-sm){font-weight: bold; font-size: 48px;}
+
+  span{
+      @media(max-width: @screen-sm){
+          font-weight: 300;
+      }
+  }
 }
 
 h3{
   font-size: 15px;
   font-weight: normal;
   margin: 0 0 22px;
+
+  @media(max-width: @screen-sm){
+      font-size: 28px;
+      margin: 0 auto 22px;
+  }
 }
 
 .button{
@@ -64,6 +77,31 @@ h3{
     color: @primary;
   }
 }
+
+.tns-outer{
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.tns-controls{display: none;}//prev and next buttons
+
+.tns-nav{
+    position: absolute; bottom: -40px; left: 0;
+    text-align: center;
+    width: 100%;
+
+    button{
+        background: transparent;
+        border: solid 1px #b7b7b7;
+        border-radius: 50%;
+        height: 20px;
+        margin: 20px 5px 0;
+        width: 20px;
+
+        &.tns-nav-active{background: #b7b7b7;}
+    }
+}
+
 //end of global styles
 
 .navigation{
@@ -95,7 +133,7 @@ h3{
 
     &:after{display: none;}
 
-    .panel__container{padding: 10px 0;}
+    .panel__container{padding: 13px 0;}
 
     .img:not(.img--mobile){display: none;}
 
@@ -113,7 +151,7 @@ h3{
     display: flex;
     padding: 0 0 11px;
 
-    @media(max-width: @screen-sm){align-items: center; justify-content: center; min-height: 24px; padding: 10px 0;}
+    @media(max-width: @screen-sm){align-items: center; justify-content: center; min-height: 24px; padding: 13px 0;}
   }
 
   .img{
@@ -152,6 +190,7 @@ h3{
 
   .img--mobile{
       display: none;
+      margin-left: -5px;
       max-width: 50%;
       @media(max-width: @screen-sm){display: block;}
   }
@@ -160,19 +199,19 @@ h3{
     cursor: pointer;
     display: none;
     padding: 15px;
-    position: absolute; top: 50%; right: 20px;
+    position: absolute; top: 50%; right: 46px;
     transform: translate(0, -50%);
 
-    @media(max-width: @screen-sm){display: inline;}
+    @media(max-width: @screen-sm){display: inline; right: 4px;}
 
     &.close{
 
         .burger{
             background: #d81e05;
 
-            &:first-of-type{transform: rotate(45deg) translate(4px, 0px);}
+            &:first-of-type{transform: rotate(45deg) translate(4px, 4px);}
             &:nth-of-type(2){display: none;}
-            &:nth-of-type(3){transform: rotate(-45deg) translate(5px, -2px);}
+            &:nth-of-type(3){transform: rotate(-45deg) translate(6px, -6px);}
         }
 
     }
@@ -180,9 +219,9 @@ h3{
     .burger{
       background: @highlight;
       display: block;
-      height: 3px;
-      margin: 0 0 5px;
-      width: 25px;
+      height: 4px;
+      margin: 0 0 10px;
+      width: 39px;
       -webkit-transition: all 0.5s ease;
       -moz-transition: all 0.5s ease;
       -o-transition: all 0.5s ease;
@@ -227,7 +266,7 @@ h3{
           background: #ebebeb;
           padding: 20px;
           margin: 20px auto 0;
-          width: 90%;
+          width: 80%;
 
           a{
               color: #707070;
@@ -265,7 +304,7 @@ h3{
       padding: 30px 0;
       position: relative;
 
-      @media(max-width: @screen-sm){height: 809px;}
+      @media(max-width: @screen-sm){height: 750px;}
   }
 
   .heading__content{
@@ -283,7 +322,7 @@ h3{
         color: #f7f7f7;
         font-size: 28px;
         font-weight: 300;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     span{
@@ -300,10 +339,11 @@ h3{
     margin: 0;
 
     @media(max-width: @screen-sm){
-        border-top: dotted 4px fade(#fff, 50%);
+        border-top: dotted 6px fade(#fff, 50%);
         color: #ebebeb;
         font-size: 28px;
-        padding: 40px 20px 0 0;
+        line-height: 1.4;
+        padding: 20px 20px 0 0;
         width: fit-content;
     }
     @media(max-width: @screen-mini){font-size: 23px;}
@@ -313,6 +353,7 @@ h3{
       color: #ebebeb;
       display: none;
       font-size: 28px;
+      margin-top: 55px;
       position: absolute; top: 0; left: 0;
 
       @media(max-width: @screen-sm){display: block;}
@@ -323,141 +364,129 @@ h3{
 }
 
 .panel--insights{
-  @royalBlue: #164fd2;
-  @green: #01a59e;
-  @babyBlue: #019bf9;
+    @media(max-width: @screen-sm){background: #001a7a;}
 
-  @media(max-width: @screen-sm){background: #001a7a;}
+    //insights panel variables
+    @royalBlue: #164fd2;
+    @green: #01a59e;
+    @babyBlue: #019bf9;
 
-  h2.heading{
+    .panel__container{
+      @media(max-width: @screen-sm){width: 100%;}
+      @media(max-width: @screen-xxs){width: 90%;}
+    }
+
+    h2.heading{
       @media(max-width: @screen-sm){
           color: #fff;
-          font-size: 48px;
-          font-weight: bold;
+          margin: 0 auto 3px;
+          width: 90%;
       }
+      @media(max-width: @screen-xxs){width: 100%;}
+    }
 
-      span{
-          @media(max-width: @screen-sm){
-              font-weight: 300;
-          }
-      }
-  }
-
-  h3{
+    h3{
       @media(max-width: @screen-sm){
           color: #ccd1e4;
-          font-size: 28px;
+          width: 90%;
       }
-  }
+      @media(max-width: @screen-xxs){width: 100%;}
+    }
 
-  .insights__list{
-    display: flex;
-    justify-content: space-between;
-    transition: all 1s ease-in-out; //carousel
-  }
+    .tns-outer{
+      @media(max-width: @screen-sm){min-height: 520px;} //prevent collapse on scroll
+      @media(max-width: @screen-xxs){min-height: 0;}
+    }
 
-  .insight{
-    background: #fff;
-    box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.1), -3px 2px 2.91px 0.09px rgba(0, 0, 0, 0.1);;
-    display: flex;
-    flex-direction: column-reverse;
-    padding: 34px 22px 17px;
-    width: 28.5%;
-  }
+    .insights__list{
+        display: flex;
+        justify-content: space-between;
+    }
 
-  .test{
-      background: pink;
-  }
+    //mixin for active insight slide on mobile
+    .insight--active{
+        @media(max-width: @screen-sm){width: 90%;}
+        @media(max-width: @screen-xxs){width: 86%;}
+    }
+    //switch active panels based on parent container's translate property
+    .insights__list[style*="translateX(0%);"] .insight--global{.insight--active();}
+    .insights__list[style*="translateX(-33.33"] .insight--outlook{.insight--active();}
+    .insights__list[style*="translateX(-66.66"] .insight--assumptions{.insight--active();}
 
-  //create mixin if time
-  .insight--global{
-    border-bottom: solid 10px @royalBlue;
-    h4{color: @royalBlue;}
-  }
+    .insight-container{width: 32%;}
 
-  .insight--outlook{
-    border-bottom: solid 10px @green;
-    h4{color: @green;}
-  }
+    .insight{
+        background: #fff;
+        box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.1), -3px 2px 2.91px 0.09px rgba(0, 0, 0, 0.1);;
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 0 auto;
+        padding: 34px 22px 17px;
 
-  .insight--assumptions{
-    border-bottom: solid 10px @babyBlue;
-    h4{color: @babyBlue;}
-  }
+        @media(max-width: @screen-sm){width: 60%;}
+        @media(max-width: @screen-xxs){width: 86%;}
 
-  h4{
+        &:hover{
+            .img:before{border-top: 103px solid transparent;}
+            .img:after{border-bottom: 103px solid transparent;}
+        }
+    }
+
+    //mixin for different colors in insight slides
+    .color-mixin (@color){
+        border-bottom: solid 10px @color;
+        h4{color: @color;}
+    }
+    .insight--global{.color-mixin (@royalBlue);}
+    .insight--outlook{.color-mixin (@green);}
+    .insight--assumptions{.color-mixin (@babyBlue);}
+
+    h4{
       font-size: 34px;
       line-height: 1.1;
       margin: 21px 0 0px;
 
+      @media(max-width: @screen-md){font-size: 28px;}
+
       span{display: block;}
-  }
+    }
 
-  .img{
+    .img{
+      max-width: 100%;
       position: relative;
+      width: 368px;
 
- //create mixin if time
- //animate this for hover state
-      &:before, &:after{
-        content: "";
-        border-top: 103px solid #fff;
-        border-right: 103px solid transparent;
-        height: 0;
-        position: absolute; top: -1px; left: -1px;
-        width: 0;
-      }
+      @media(max-width: @screen-sm){width: 100%;}
 
-      &:after{
-          border: none;
-          border-bottom: 103px solid #fff;
-          border-left: 103px solid transparent;
-          position: absolute; bottom: -1px; right: -1px; top: auto; left: auto;
-      }
-  }
+      //mixin for "triangles" on images
+      .triangle-mixin{
+          content: "";
+          height: 0;
+          position: absolute;
+          transition: 1s;
+          width: 0;
+       }
 
-  img{
+        &:before{
+            .triangle-mixin();
+            border-top: 103px solid #fff;
+            border-right: 103px solid transparent;
+            top: -1px; left: -1px;
+        }
+
+        &:after{
+            .triangle-mixin();
+            border-bottom: 103px solid #fff;
+            border-left: 103px solid transparent;
+            bottom: -1px; right: -1px;
+        }
+    }
+
+    img{
       display: block;
       height: auto;
       width: 100%;
-  }
-
-//https://codepen.io/Jake_Woods/pen/vYYoYxo
-//first carousel attempt
-.insights__wrapper{
-    display: flex;
-    grid-gap: 1em;
-    overflow: hidden;
-    width: 55em;
-}
-
-.insights__list{
-    display: flex;
-    grid-gap: 1em;
-    transition: all 1s ease-in-out;
-}
-
-  .buttons__wrapper {
-      text-align: center;
-    margin-top: 1em;
-    width: 100%;
-    & > button {
-      all: unset;
-      background: transparent;
-      border: solid 1px #b7b7b7;
-      border-radius: 50%;
-      cursor: pointer;
-      height: 16px;
-      margin: 0 0.125em;
-      position: relative;
-      user-select: none;
-      width: 16px;
-
-      &.active {
-        background: #b7b7b7;
-      }
     }
-  }
-  //first carousel attempt
 
 }
 
@@ -486,10 +515,36 @@ h3{
 }
 
 .panel--events{
+    @media(max-width: @screen-sm){background: #ebebeb;}
 
-    .panel__container{
-        padding: 39px 0 98px;
+  .panel__container{
+      padding: 39px 0 98px;
+
+      @media(max-width: @screen-sm){padding-bottom: 40px; width: 100%;}
+      @media(max-width: @screen-xxs){width: 90%;}
     }
+
+    h2.heading{
+        @media(max-width: @screen-sm){
+            color: #001a7a;
+            margin: 0 auto 3px;
+            width: 90%;
+        }
+        @media(max-width: @screen-xxs){width: 100%;}
+    }
+
+    h3{
+        @media(max-width: @screen-sm){
+            color: #707070;
+            width: 90%;
+        }
+        @media(max-width: @screen-xxs){width: 100%;}
+    }
+
+  .tns-outer{
+    @media(max-width: @screen-sm){min-height: 521px;} //prevent collapse on scroll
+    @media(max-width: @screen-xxs){min-height: 0;}
+  }
 
   .events{
     color: #fff;
@@ -500,16 +555,45 @@ h3{
     @media(max-width: @screen-sm){display: block;}
   }
 
+  //mixin for active event panel on mobile carousel
+  .event--active{
+      @media(max-width: @screen-sm){
+          margin-top: 0;
+          .event__info{min-height: 240px;}
+          h4{font-size: 40px;}
+          p{font-size: 28px;}
+          .event__location{font-size: 28px;}
+      }
+      @media(max-width: @screen-xxs){
+          .event__info{min-height: 200px;}
+          h4{font-size: 28px;}
+          p{font-size: 16px;}
+          .event__location{font-size: 16px;}
+      }
+  }
+  //switch active panels based on parent container's translate property
+  .events[style*="translateX(0%);"] #tns2-item0 .event{.event--active();}
+  .events[style*="translateX(-33.33"] #tns2-item1 .event{.event--active();}
+  .events[style*="translateX(-66.66"] #tns2-item2 .event{.event--active();}
+
+  .event-container{width: 32%;}
+
   .event{
     background: @primary;
     padding: 85px 21px 99px;
     position: relative;
-    width: 28.6%;
+
+    @media(max-width: @screen-sm){margin-top: 40px; width: auto;}
+    @media(max-width: @screen-xxs){margin-top: 0;}
   }
 
   .event__info{
       min-height: 138px;
       position: relative;
+
+      @media(max-width: @screen-lg){min-height: 200px;}
+      @media(max-width: @screen-sm){min-height: 160px;}
+      @media(max-width: @screen-xxs){min-height: 200px;}
   }
 
   h4{
@@ -561,6 +645,9 @@ h3{
     text-align: right;
     width: 72%;
 
+    @media(max-width: @screen-lg){font-size: 16px; width: 66%;}
+    @media(max-width: @screen-sm){color: #707070; padding: 10px 21px;}
+
     &:after{
       content: "";
       border-bottom: 51px solid @secondary;
@@ -570,6 +657,17 @@ h3{
       width: 0;
     }
   }
+
+  .img{
+      display: none;
+      margin: 90px auto 0;
+      text-align: center;
+      width: 92px;
+
+      @media(max-width: @screen-sm){display: block;}
+
+      img{height: auto; width: 100%;}
+  }
 }
 
 .panel--footer{
@@ -577,16 +675,91 @@ h3{
   color: #c7c7c7;
   font-size: 12px;
 
+  @media(max-width: @screen-sm){background: #cccccc;}
+
   .panel__container{
     align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 9px 0 37px;
+    position: relative;
+
+    @media(max-width: @screen-sm){display: block;}
+  }
+
+  //move containers off-screen instead of using display: none
+  .container--desktop{
+      @media(max-width: @screen-sm){position: absolute; right: -100%; top: -100%;}
+  }
+
+  .container--mobile{
+      padding-top: 40px;
+      position: absolute; right: -100%; top: -100%;
+      @media(max-width: @screen-sm){position: relative; right: 0; top: 0;}
+
+      a{
+          background: #eaecee;
+          color: #707070;
+          display: block;
+          font-size: 24px;
+          font-weight: bold;
+          padding: 20px 0;
+          text-align: center;
+          text-decoration: none;
+
+          &:hover{color: #000;}
+      }
   }
 
   .social{
-    display: flex;
+      align-items: center;
+      display: flex;
+
+    span{
+        color: #fff;
+        margin-right: 10px;
+    }
+
+    .social__icons{
+        display: flex;
+    }
+
+    .icon{
+        background: #c6c6c6;
+        border-radius: 50%;
+        color: #707070;
+        margin-right: 8px;
+        padding: 3px;
+    }
   }
 
   span{display: block;}
+
+  .site-info{
+      display: flex;
+      justify-content: space-between;
+
+      @media(max-width: @screen-mini){display: block;}
+
+      a{
+          width: 48%;
+          @media(max-width: @screen-mini){margin-bottom: 20px; width: 100%;}
+      }
+  }
+
+  .site-links{
+
+    h2{
+        border-bottom: solid 1px #999;
+        color: #193989;
+        font-size: 24px;
+        font-weight: 300;
+        margin-top: 30px;
+        padding-bottom: 15px;
+        text-align: center;
+    }
+
+    a{margin-bottom: 20px;}
+  }
+
 }

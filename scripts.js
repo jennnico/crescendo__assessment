@@ -53,44 +53,48 @@ $('.navigation__items a').click(function(){
     $('body').css("overflow", "visible");
 });
 
+//tiny slider for insights panel
+const insights__slider = tns({
+  container: '.insights__list',
+  items: 1,
+  gutter: 10,
+  loop: false,
+  mouseDrag: true,
 
-//carousel attempt
-//https://codepen.io/flowrome/pen/abowVRE
-var slides = $('.insights__list');
-var slide = $('.insight');
-var bullet = $('.bullet');
+  responsive: {
+      560:{
+          edgePadding: 40
+      },
+      700: {
+        edgePadding: 139
+    },
+      860: {
+        disable: true
+    }
 
-bullet.click(function(){
-    console.log($(this).attr('id'));
-    var id = $(this).attr('id');
-
-    slide.removeClass('test');
-    $(`.insight.${id}`).addClass('test');
-
+  }
 });
 
+//tiny slider for events panel
+const events__slider = tns({
+  container: '.events',
+  items: 1,
+  gutter: 10,
+  loop: false,
+  mouseDrag: true,
 
+  responsive: {
+      560:{
+          edgePadding: 40
+      },
+      700: {
+        edgePadding: 139
+    },
+      860: {
+        disable: true
+    }
 
-//https://codepen.io/Jake_Woods/pen/vYYoYxo
-// buttonsWrapper.addEventListener("click", e => {
-//   if (e.target.nodeName === "BUTTON") {
-//     Array.from(buttonsWrapper.children).forEach(item =>
-//       item.classList.remove("active")
-//     );
-//     if (e.target.classList.contains("first")) {
-//       slides.style.transform = "translateX(-0%)";
-//       e.target.classList.add("active");
-//     } else if (e.target.classList.contains("second")) {
-//       slides.style.transform = "translateX(-33.33333333333333%)";
-//       e.target.classList.add("active");
-//     } else if (e.target.classList.contains('third')){
-//       slides.style.transform = 'translatex(-66.6666666667%)';
-//       e.target.classList.add('active');
-//     }
-//   }
-// });
-//first carousel attempt
-
-
+  }
+});
 
 })
